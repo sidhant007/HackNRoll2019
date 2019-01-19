@@ -1,16 +1,21 @@
 {
   "manifest_version": 2,
 
-  "name": "Modify CSS and HTML",
+  "name": "Packyboi",
   "version": "0.1.0",
   "description": "Lateral blog post demo extension",
-
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "about_us.html"
+  },
   "content_scripts": [{
     "js": ["content.js"],
+    "css": ["main.css"],
     "matches": [
-            "http://*/*",
-            "https://*/*"
-            ]
+      "http://*/*",
+      "https://*/*"
+    ],
+    "run_at": "document_end"
   }]
 
 }
