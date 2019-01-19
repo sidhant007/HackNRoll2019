@@ -10,6 +10,7 @@ image.setAttribute("style", "margin-left:200px;");
 image.setAttribute("style", "margin-top:200px;");
 document.getElementsByTagName("body")[0].appendChild(image);
 */
+
 document.documentElement.style.height = '100%';
 document.body.style.height = '100%';
 document.documentElement.style.width = '100%';
@@ -86,12 +87,23 @@ function add_walls(x1, y1, x2, y2) {
 }
 
 add_score_card();
-add_pacman(70, 70, 30);
+add_pacman(1000, 30, 30);
 for(var i = 0; i < 8; i++) {
-  add_dots(100 * (i + 1), 100 * (i + 1), 15);
+  add_dots(0, 100 * (i + 1), 15);
 }
-for(var i = 0; i < 1; i++) {
-  add_walls(120, 120, 200, 200);
+function area_of(rect) {
+  return (rect.right - rect.left) * (rect.bottom - rect.top);
+}
+var all = document.getElementsByTagName("*");
+for (var i = 0; i < all.length; i++) {
+  var rect = all[i].getBoundingClientRect();
+  if(all[i].tagName != "P" && all[i].tagName != "A")  continue;
+  if(Math.round(area_of(rect)) > 30000) continue;
+  add_walls(Math.round(rect.left), Math.round(rect.top), Math.round(rect.right), Math.round(rect.bottom));
+}
+for(var i = 0; i < 2; i++) {
+  //add_walls(120, 120, 800, 200);
+  //add_walls(0, 100, 400, 120);
 }
 add_power(100, 500, 15);
 add_power(500, 100, 15);
@@ -186,7 +198,7 @@ function leftArrowPressed() {
   element.style.transform = "rotate(180deg)"
   if(prev_dir != 0) acc = 0;acc
   var new_left = parseFloat(element.style.left) - Math.min(max_speed, speed + acc) + 'px';
-  if(isHit(to_int(element.style.top), to_int(new_left)))  return ;
+  if(isHit(to_int(new_left), to_int(element.style.top)))  return ;
   element.style.left = new_left;
   acc += delta;
   prev_dir = 0;
@@ -198,7 +210,7 @@ function rightArrowPressed() {
   element.style.transform = "rotate(0deg)"
   if(prev_dir != 1) acc = 0;
   var new_left = parseFloat(element.style.left) + Math.min(max_speed, speed + acc) + 'px';
-  if(isHit(to_int(element.style.top), to_int(new_left)))  return ;
+  if(isHit(to_int(new_left), to_int(element.style.top)))  return ;
   element.style.left = new_left;
   acc += delta;
   prev_dir = 1;
@@ -210,7 +222,7 @@ function upArrowPressed() {
   element.style.transform = "rotate(270deg)"
   if(prev_dir != 2) acc = 0;
   var new_top = parseFloat(element.style.top) - Math.min(max_speed, speed + acc) + 'px';
-  if(isHit(to_int(new_top), to_int(element.style.left)))  return ;
+  if(isHit(to_int(element.style.left), to_int(new_top)))  return ;
   element.style.top = new_top;
   acc += delta;
   prev_dir = 2;
@@ -222,7 +234,7 @@ function downArrowPressed() {
   element.style.transform = "rotate(90deg)"
   if(prev_dir != 3) acc = 0;
   var new_top = parseFloat(element.style.top) + Math.min(max_speed, speed + acc) + 'px';
-  if(isHit(to_int(new_top), to_int(element.style.left)))  return ;
+  if(isHit(to_int(element.style.left), to_int(new_top)))  return ;
   element.style.top = new_top;
   acc += delta;
   prev_dir = 3;
