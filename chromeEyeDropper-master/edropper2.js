@@ -2,10 +2,10 @@ var EDROPPER_VERSION = 11;
 const CANVAS_MAX_SIZE = 32767 - 20
 const DEBUG = false;
 
-console.log($(document).width(), " : ", $(document).height() )
+//console.log($(document).width(), " : ", $(document).height() )
 var page = {
-    width: $(document).width(),
-    height: $(document).height(),
+    width: 818,
+    height: 789,
     imageData: null,
     canvasBorders: 20,
     canvasData: null,
