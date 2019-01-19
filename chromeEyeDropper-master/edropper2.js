@@ -1,8 +1,6 @@
 var EDROPPER_VERSION = 11;
 const CANVAS_MAX_SIZE = 32767 - 20
 const DEBUG = false;
-var colorArray = new Array($(document).width());
-var heightArray = new Array($(document).height());
 
 console.log($(document).width(), " : ", $(document).height() )
 var page = {
@@ -248,8 +246,6 @@ var page = {
             return;
         //MODIFIED
         var color = page.pickColor(e);
-        colorArray.push(color)
-        console.log(color)
 
         var fromTop = -15;
         var fromLeft = 10;
@@ -502,12 +498,17 @@ var page = {
             };
             var merged = false;
 
+            
 
-
+            var myOffsetX = rect.x;
+            var myOffsetY = rect.y;
+            var myWidth =rect.width;
+            var myHeight = rect.height;
+			var colorArray = new Array(myWidth);
+			var heightArray = new Array(myHeight);
             //image width and height are fixed
             //xoffset is always 0
             //yoffset is scroll dependent
-            console.log("printing screen coordinates: ", rect.y)
 
             // if there are already any rectangles
             if (page.rects.length > 0) {
@@ -537,18 +538,23 @@ var page = {
             // ---------------------------------
             // ARRAY FINDING CODE- MODIFIED
             // ---------------------------------
-            var myOffsetX = page.rects[0].x;
-            var myOffsetY = page.rects[0].y;
-            var myWidth = page.rects[0].width;
-            var myHeight = page.rects[0].height;
+            var var1 = 0;
+            var var2 = 0;
+            var cnt = 0;
+            console.log("my vals: ", myOffsetX, myOffsetY, myWidth, myHeight)
             for(var i = myOffsetX; i < (myOffsetX+myWidth); i++) {
                 for(var j = myOffsetY; j < (myOffsetY+myHeight); j++) {
-                    heightArray[j] = page.pickColor2(i, j).rgbhex;
+                	//console.log("checking i j", i, j)
+                    heightArray[var1] = page.pickColor2(i, j).rgbhex;
+                    var1++;
+                    if(heightArray[var1] == "ffffff")	cnt++;
                 }
-                colorArray[i] = heightArray;
+                colorArray[var2] = heightArray;
+                var2++;
+                var1=0;
             }
             console.log("Trying colour array: ", colorArray);
-
+            console.log("Percentage white: ", cnt / (myWidth * myHeight));
 
             // re-enable tooltip and toolbox
             if (page.options.enableColorTooltip === true) {
