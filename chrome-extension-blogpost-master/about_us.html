@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Highlight Extension</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="make_groups.js"></script>
+  </head>
+
+  <body id="about-us">
+    <h1 class="center">HighLight</h1>
+    <h2 class="center">A Chrome Extension to increase productivity</h2>
+    <p>
+      Created at #FBSGHACK18!!
+    </p>
+    <form onsubmit="join_group(); return false;">
+      <label for="Join Group"> Join group: </label>
+      <input id="join_group" type="text" required="true" placeholder="Name of the group">
+      <input id="join_submit_btn" type="submit" value="Join" class="btn btn-success">
+    </form>
+    <br>
+    <form onsubmit="create_group(); return false;">
+      <label for="Create Group"> Create group: </label>
+      <input id="create_group" type="text" required="true" placeholder="Name of the group">
+      <input id="create_submit_btn" type="submit" value="Create" class="btn btn-success">
+    </form>
+
+    <script>
+      var joinBtn = document.getElementById('join_submit_btn');
+      btn.addEventListener('click', function(){
+        alert("fjdcnk");
+      });
+    </script>
+  </body>
+</html>

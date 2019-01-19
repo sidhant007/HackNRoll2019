@@ -1,0 +1,63 @@
+/*
+  ========================================
+  HTML Styles
+  ========================================
+*/
+
+#about-us {
+  width: 400px;
+  height: 550px;
+  background-color: #faff9e;
+  margin: 0px;
+  padding: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+/*
+  ========================================
+  Tooltip Styles
+  ========================================
+*/
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: rgba(0,0,0, 0.9);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 2px 0;
+    font-size: 20px;
+    transition: 0.5s ease-in-out 0.7s;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+      visibility: visible;
+      transition: .25s ease-in-out 0s;
+}
+
+.upvote {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: 20px;
+}
+
+.upvote:hover {
+  font-size: 30px;
+}
+
+.downvote {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: 20px;
+}
+
+.downvote:hover {
+  font-size: 30px;
+}
