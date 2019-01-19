@@ -589,6 +589,7 @@ function loadColorPicker() {
         colorBox('current', cpicker.target.value)
         bgPage.bg.setColor(cpicker.target.value, true, 2)
         drawColorHistory()
+
     }
 }
 

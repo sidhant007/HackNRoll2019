@@ -39,8 +39,8 @@ var bg = {
     defaultSettings: {
         autoClipboard: false,
         autoClipboardNoGrid: false,
-        enableColorToolbox: true,
-        enableColorTooltip: true,
+        enableColorToolbox: false,
+        enableColorTooltip: false,
         enableRightClickDeactivate: true,
         dropperCursor: 'default',
         plus: false,

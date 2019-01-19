@@ -2,7 +2,11 @@ var EDROPPER_VERSION = 11;
 const CANVAS_MAX_SIZE = 32767 - 20
 const DEBUG = false;
 
-//console.log($(document).width(), " : ", $(document).height() )
+window.addEventListener('keydown', moveSelection);
+
+function moveSelection() {   
+    console.log("KEYBOARD DOWN LISTENER WORKING")
+}
 var page = {
     width: 818,
     height: 789,
@@ -14,8 +18,8 @@ var page = {
     screenHeight: 0,
     options: {
         cursor: 'default',
-        enableColorToolbox: true,
-        enableColorTooltip: true,
+        enableColorToolbox: false,
+        enableColorTooltip: false,
         enableRightClickDeactivate: true
     },
 
@@ -84,6 +88,7 @@ var page = {
         if (page.options.enableColorTooltip === true) {
             inserted += '<div id="color-tooltip"> </div>';
         }
+
         if (page.options.enableColorToolbox === true) {
             inserted += '<div id="color-toolbox"><div id="color-toolbox-color"></div><div id="color-toolbox-text"></div></div>';
         }
@@ -141,7 +146,7 @@ var page = {
             page.elColorTooltip.remove();
         }
         if (page.options.enableColorToolbox === true) {
-            page.elColorToolbox.remove();
+            //page.elColorToolbox.remove();
         }
         $("#eye-dropper-overlay").remove();
     },
@@ -154,7 +159,7 @@ var page = {
         if (!page.dropperActivated)
             return;
         console.log("printing here:", e)
-        page.tooltip(e);
+        //page.tooltip(e);
     },
 
     onMouseClick: function(e) {
@@ -267,11 +272,11 @@ var page = {
 
         // set toolbox
         if (page.options.enableColorToolbox === true) {
-            page.elColorToolboxColor.css({
-                'background-color': '#' + color.rgbhex
-            });
-            page.elColorToolboxText.html('#' + color.rgbhex + '<br />rgb(' + color.r + ',' + color.g + ',' + color.b + ')');
-            page.elColorToolbox.show();
+        //    page.elColorToolboxColor.css({
+        //        'background-color': '#' + color.rgbhex
+        //    });
+        //    page.elColorToolboxText.html('#' + color.rgbhex + '<br />rgb(' + color.r + ',' + color.g + ',' + color.b + ')');
+        //    page.elColorToolbox.show();
         }
     },
 
@@ -561,7 +566,7 @@ var page = {
                 page.elColorTooltip.show(1);
             }
             if (page.options.enableColorToolbox === true) {
-                page.elColorToolbox.show(1);
+                //page.elColorToolbox.show(1);
             }
 
             if ( DEBUG ) {
